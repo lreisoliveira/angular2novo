@@ -1,0 +1,65 @@
+<div class="campeonato">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active">
+            <div class="row" ng-if="grupo.classificacao.length > 0">
+                <div>
+                    <div class="grupo">
+                        <h3 [innerHtml]="grupo.nome"></h3>
+                        <!--span data-ng-init="setGrupo(grupoNome)"></span-->
+                        <table width="100%">
+                            <thead>
+                                <tr>
+                                    <td class="titulo">Classificação</td>
+                                    <td title="Pontos">P</td>
+                                    <td title="Jogos">J</td>
+                                    <td title="Vitórias">V</td>
+                                    <td title="Empates">E</td>
+                                    <td title="Derrotas">D</td>
+                                    <td title="Gols Pró">GP</td>
+                                    <td title="Gols Contra">GC</td>
+                                    <td title="Saldo de Gols">SG</td>
+                                    <td title="Aproveitamento">%</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let time of grupo?.classificacao; let posicao = index">
+                                    <td class="time" [attr.title]="time.equipe.nome" [attr.alt]="time.equipe.nome">
+                                        <b>{{posicao+1}}</b><span [innerHtml]="time.equipe.nome" class="tem-link-verificacao"></span>
+                                    </td>
+                                    <td class="zebra" [innerHtml]="time.pontos"></td>
+                                    <td [innerHtml]="time.jogos"></td>
+                                    <td [innerHtml]="time.vitorias" class="zebra"></td>
+                                    <td [innerHtml]="time.empates"></td>
+                                    <td [innerHtml]="time.derrotas" class="zebra"></td>
+                                    <td [innerHtml]="time.gols_pro"></td>
+                                    <td [innerHtml]="time.gols_contra" class="zebra"></td>
+                                    <td [innerHtml]="time.saldo_gols"></td>
+                                    <td [innerHtml]="time.aproveitamento" class="zebra"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class-info">
+                        <div class="legenda">
+                            <strong>P: </strong>Pontos |
+                            <strong>J: </strong>Jogos |
+                            <strong>V: </strong>Vitórias |
+                            <strong>E: </strong>Empates |
+                            <strong>D: </strong>Derrotas |
+                            <strong>GP: </strong>Gols Pró |
+                            <strong>GC: </strong>Gols Contra |
+                            <strong>SG: </strong>Saldo de gols |
+                            <strong>%: </strong>Aproveitamento
+                        </div>
+                        <br clear="all" />
+                        <!--div class="flags">
+                            <div ng-if="legenda.classificados[grupoNome].length > 0" class="box-classificados"><spam>&nbsp;</spam> {{ legenda.classificados_alias[grupoNome] }} </div>
+                            <div ng-if="legenda.semi_classificados[grupoNome].length > 0" class="box-semi-classificados"><spam>&nbsp;</spam> {{ legenda.semi_classificados_alias[grupoNome] }} </div>
+                            <div ng-if="legenda.rebaixados[grupoNome].length > 0"class="box-rebaixados"><spam>&nbsp;</spam> {{ legenda.rebaixados_alias[grupoNome] }} </div>
+                        </div-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 export class TemplateComponent {
 
   @Input()
-  variavel: any = [];
+  configCampeonato: any = [];
 
 }
 

@@ -1,21 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { RouterModule, Routes } from '@angular/router';
-import { AppRoutes } from './routes';
-
-import { TabelaComponent } from "./index/tabela.component";
-
 import { HttpModule } from '@angular/http';
-import { ApiService } from "./service/api.service";
+
+import { AppRoutes } from './routes';
 import { ApiConfig } from "./config/api.config";
-import { Campeonato } from "./campeonato/tabela.campeonato";
+
+import { Campeonato } from "./lib/campeonato";
+import { ApiService } from "./service/api.service";
+
+import { IndexComponent } from "./index/index.component";
 import { TemplateComponent } from "./campeonato/template.component";
+
+import { PontosCorridosComponent } from "./campeonato/modelos/pontos-corridos.component";
+
+import { ClassificacaoComponent } from "./campeonato/modulos/classificacao/classificacao.component";
+import { RodadasComponent } from "./campeonato/modulos/rodadas/rodadas.component";
 
 @NgModule({
   declarations: [
-    TabelaComponent,
-    TemplateComponent
+    IndexComponent,
+    TemplateComponent,
+    PontosCorridosComponent,
+    ClassificacaoComponent,
+    RodadasComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +31,6 @@ import { TemplateComponent } from "./campeonato/template.component";
     HttpModule
   ],
   providers: [ApiService, ApiConfig, Campeonato],
-  bootstrap: [TabelaComponent]
+  bootstrap: [IndexComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { TabelaComponent } from "./index/tabela.component";
+import { IndexComponent } from "./index/index.component";
 
 export const AppRoutes: Routes = [
-  { path: '', component: TabelaComponent },
+  { path: '', component: IndexComponent },
 ];

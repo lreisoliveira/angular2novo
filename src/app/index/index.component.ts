@@ -1,14 +1,14 @@
 import { Component, ElementRef } from '@angular/core';
 import { ApiService } from './../service/api.service';
 import { ServiceLocator } from "./../service_locator";
-import { Campeonato } from "../campeonato/tabela.campeonato";
+import { Campeonato } from "../lib/campeonato";
 
 @Component({
-  selector: 'tabela-campeonato',
-  templateUrl: './tabela.component.html',
+  selector: 'index-tabela-campeonato',
+  templateUrl: './index.component.html',
 })
 
-export class TabelaComponent extends Campeonato {
+export class IndexComponent extends Campeonato {
 
   public api: any;
 

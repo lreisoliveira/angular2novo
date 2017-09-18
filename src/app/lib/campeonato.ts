@@ -1,9 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
-
-@Component({
-    selector: 'tabela-campeonato',
-    templateUrl: './brasileiro.component.html',
-})
+import { Component } from '@angular/core';
 
 export class Campeonato {
 
@@ -18,18 +13,23 @@ export class Campeonato {
     if (this.anoCampeonato.length > 4) {
       this.anoCampeonato = this.anoCampeonato.substr(0,4) + '-' + this.anoCampeonato.substr(4,4);
     }
-    this.configCampeonato = this.configurarCampeonato(campeonato,this.anoCampeonato)
-    console.log('configCampeonato', this.configCampeonato);
+    this.configCampeonato = this.criarConfigCampeonato(campeonato,this.anoCampeonato)
+    //console.log('configCampeonato', this.configCampeonato.campeonato.nome);
+    //console.log('configCampeonato campeonato', campeonato);
     //this.montarTabela(this.configCampeonato);
     //this.configCampeonato = this.slug;
   }
 
-  public configurarCampeonato(campeonato, anoCampeonato){
-    var config       = [];
-    config['ano']    = anoCampeonato;
-    config['modelo'] = campeonato.tipo;
+  public criarConfigCampeonato(campeonato, anoCampeonato){
+    var config                 = [];
+    config['ano']              = anoCampeonato;
+    config['modelo']           = campeonato.tipo;
+    config['json']             = campeonato;
+    config['mostrarNomeGrupo'] = true;
+
     if (campeonato.tipo != 'pontos_corridos'){
-     config['modelo'] = this.removerCaracteres(campeonato.slug);
+      config['modelo']           = this.removerCaracteres(campeonato.slug);
+      config['mostrarNomeGrupo'] = false;
     }
     return config;
   }
