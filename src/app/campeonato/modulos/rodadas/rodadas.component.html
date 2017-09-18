@@ -8,34 +8,37 @@ rodadas
                     <ul class="rodadas">
                         <div class="controls cycle-prev fa fa-angle-left anterior" (click)="moverRodadaAnterior(nomeReduzidoDoGrupo)"> < </div>
                         <div class="controls cycle-next fa fa-angle-right"         (click)="moverProximaRodada(nomeReduzidoDoGrupo)"> > </div>
+
                         <li class="rodadas_grupo_{{nomeReduzidoDoGrupo}}"
                         *ngFor="let rodada of jsonParaArray(jogos[nomeReduzidoDoGrupo]); let numRodada = index">
                             <h3 class="titulo-rodada">{{numRodada+1}}<sup>ª</sup> Rodada <i class="icon-angle-down icon-menu-rodadas"></i></h3>
-                            <!--div ng-repeat="partida in rodada" class="jogo bordered">
+
+                            <div
+                            *ngFor="let partida of rodada;" class="jogo bordered">
 
                                 <div class="times clearfix">
-                                    <span ng-bind-html='partida.equipe_1.escudo.url_min | filtrarSrc:partida.equipe_1.nome | teamLink: partida.equipe_1.pagina_site: partida.equipe_1.nome'></span>
+                                    <span [innerHtml]='partida.equipe_1.escudo.url_min | FiltrarEscudo:partida.equipe_1.nome | LinkPaginaEquipe: partida.equipe_1.pagina_site: partida.equipe_1.nome'></span>
                                     <span class="placar">
 
-                                        <span ng-bind-html='partida.equipe_1.abreviacao | teamLink: partida.equipe_1.pagina_site: partida.equipe_1.nome' class="nome" alt="{{ partida.equipe_1.nome }}" title="{{ partida.equipe_1.nome }}"></span>
+                                        <span [innerHtml]='partida.equipe_1.abreviacao | LinkPaginaEquipe: partida.equipe_1.pagina_site: partida.equipe_1.nome' class="nome" [attr.alt]="partida.equipe_1.nome" [attr.title]="partida.equipe_1.nome"></span>
 
-                                        <span class="gol" alt="placar" title="placar">{{ partida.equipe_1.placar }}</span>
+                                        <span class="gol" [attr.alt]="placar" [attr.title]="placar" [innerHtml]="partida.equipe_1.placar"></span>
 
                                         <span class="separador">&times;</span>
 
-                                        <span class="gol" alt="Placar" title="Placar">{{ partida.equipe_2.placar }}</span>
+                                        <span class="gol" [attr.alt]="Placar" [attr.title]="Placar" [innerHtml]="partida.equipe_2.placar"></span>
 
-                                        <span ng-bind-html='partida.equipe_2.abreviacao | teamLink: partida.equipe_2.pagina_site: partida.equipe_2.nome' class="nome" alt="{{ partida.equipe_2.nome }}" title="{{ partida.equipe_2.nome }}"></span>
+                                        <span [innerHtml]='partida.equipe_2.abreviacao | LinkPaginaEquipe: partida.equipe_2.pagina_site: partida.equipe_2.nome' class="nome" [attr.alt]="partida.equipe_2.nome" [attr.title]="partida.equipe_2.nome"></span>
 
                                     </span>
-                                    <span ng-bind-html='partida.equipe_2.escudo.url_min | filtrarSrc:partida.equipe_2.nome | teamLink: partida.equipe_2.pagina_site: partida.equipe_2.nome'></span>
+                                    <span [innerHtml]='partida.equipe_2.escudo.url_min | FiltrarEscudo:partida.equipe_2.nome | LinkPaginaEquipe: partida.equipe_2.pagina_site: partida.equipe_2.nome'></span>
                                 </div>
-                                <div class="info">{{ partida.data | date:'EEE' | diaDaSemana }} - {{ partida.data | date:'dd/MM/yyyy HH:mm' | formataData }} {{ partida.estadio.nome | formata_nome_estadio }}</div>
+                                <!--div class="info">{{ partida.data | date:'EEE' | diaDaSemana }} - {{ partida.data | date:'dd/MM/yyyy HH:mm' | formataData }} {{ partida.estadio.nome | formata_nome_estadio }}</div-->
                                 <div class="actions">
-                                    <a ng-show="partida.links.relato" href="{{ partida.links.relato }}" title="Pós-jogo" alt="Pós-jogo" class="link-pos">Pós-jogo</a>
-                                    <a ng-show="partida.links.aovivo && !partida.links.relato"  href="{{ partida.links.aovivo }}" class="link-aovivo" alt="Ao vivo" title="Ao vivo">Acompanhe </a>
+                                    <!--a ng-show="partida.links.relato" href="{{ partida.links.relato }}" [attr.title]="Pós-jogo" [attr.alt]="Pós-jogo" class="link-pos">Pós-jogo</a>
+                                    <a ng-show="partida.links.aovivo && !partida.links.relato"  href="{{ partida.links.aovivo }}" class="link-aovivo" [attr.alt]="Ao vivo" [attr.title]="Ao vivo">Acompanhe </a-->
                                 </div>
-                            </div -->
+                            </div>
                         </li>
                     </ul>
                 </div>

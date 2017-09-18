@@ -18,7 +18,11 @@ import { PontosCorridosComponent } from "./campeonato/modelos/pontos-corridos.co
 
 import { ClassificacaoComponent } from "./campeonato/modulos/classificacao/classificacao.component";
 import { RodadasComponent } from "./campeonato/modulos/rodadas/rodadas.component";
+
 import { ReduzirNomeGrupoPipe } from "./pipes/reduzir-nome-grupo";
+import { FiltrarEscudoPipe } from "./pipes/filtrar-escudo";
+import { LinkPaginaEquipePipe } from "./pipes/link-pagina-equipe";
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -28,7 +32,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PontosCorridosComponent,
     ClassificacaoComponent,
     RodadasComponent,
-    ReduzirNomeGrupoPipe
+    ReduzirNomeGrupoPipe,
+    FiltrarEscudoPipe,
+    LinkPaginaEquipePipe
   ],
   imports: [
     BrowserModule,
