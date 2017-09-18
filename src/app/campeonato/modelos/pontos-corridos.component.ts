@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Directive } from '@angular/core';
 
 @Component({
     selector: 'modelo-pontos-corridos',
@@ -6,10 +6,5 @@ import { Component, Input } from '@angular/core';
 })
 
 export class PontosCorridosComponent {
-
-  @Input()
-  campeonato: any = [];
-
+  @Input() campeonato: any = [];
 }
-
-

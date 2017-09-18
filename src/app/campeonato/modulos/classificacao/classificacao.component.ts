@@ -1,10 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Directive } from '@angular/core';
 
 @Component({
     selector: 'tabela-modulo-classificacao',
     templateUrl: './classificacao.component.html',
 })
-
 export class ClassificacaoComponent {
 
   @Input()
@@ -13,6 +12,7 @@ export class ClassificacaoComponent {
   @Input()
   grupo: any = [];
 
+  @Input()
+  nomeReduzidoDoGrupo: String;
+
 }
-
-

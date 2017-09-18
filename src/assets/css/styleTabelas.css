@@ -1111,3 +1111,23 @@ i.icon-up {
         height: 55px;
     }
 }
+
+.circle {
+  border-radius: 20px;
+    height: 20px;
+    font-weight: bold;
+    width: 20px;
+    display: table;
+}
+
+.circle.classificados {
+    background-color: #679901;
+}
+
+.circle.semi_classificados {
+    background-color: #dd9901;
+}
+
+.circle.rebaixados {
+    background-color: #ff4444;
+}

@@ -4,8 +4,7 @@
             <div class="row" ng-if="grupo.classificacao.length > 0">
                 <div>
                     <div class="grupo">
-                        <h3 [innerHtml]="grupo.nome"></h3>
-                        <!--span data-ng-init="setGrupo(grupoNome)"></span-->
+                        <h3 [hidden]="!!campeonato.mostrarNomeGrupo" [innerHtml]="grupo.nome"></h3>
                         <table width="100%">
                             <thead>
                                 <tr>
@@ -22,7 +21,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let time of grupo?.classificacao; let posicao = index">
+                                <tr *ngFor="let time of grupo?.classificacao; let posicao = index" [ngClass]="{
+                                        'classificados':      (campeonato.legenda.classificados[nomeReduzidoDoGrupo].indexOf(posicao+1) > -1),
+                                        'rebaixados':         (campeonato.legenda.rebaixados[nomeReduzidoDoGrupo].indexOf(posicao+1) > -1),
+                                        'semi-classificados': (campeonato.legenda.semi_classificados[nomeReduzidoDoGrupo].indexOf(posicao+1) > -1)
+                                        }">
                                     <td class="time" [attr.title]="time.equipe.nome" [attr.alt]="time.equipe.nome">
                                         <b>{{posicao+1}}</b><span [innerHtml]="time.equipe.nome" class="tem-link-verificacao"></span>
                                     </td>
@@ -52,11 +55,20 @@
                             <strong>%: </strong>Aproveitamento
                         </div>
                         <br clear="all" />
-                        <!--div class="flags">
-                            <div ng-if="legenda.classificados[grupoNome].length > 0" class="box-classificados"><spam>&nbsp;</spam> {{ legenda.classificados_alias[grupoNome] }} </div>
-                            <div ng-if="legenda.semi_classificados[grupoNome].length > 0" class="box-semi-classificados"><spam>&nbsp;</spam> {{ legenda.semi_classificados_alias[grupoNome] }} </div>
-                            <div ng-if="legenda.rebaixados[grupoNome].length > 0"class="box-rebaixados"><spam>&nbsp;</spam> {{ legenda.rebaixados_alias[grupoNome] }} </div>
-                        </div-->
+                        <div class="flags">
+                            <div *ngIf="campeonato.legenda.classificados[nomeReduzidoDoGrupo].length > 0" class="box-classificados">
+                                <div class="circle classificados">&nbsp;</div>
+                                <div>{{campeonato.legenda.classificados_alias[nomeReduzidoDoGrupo]}}</div>
+                            </div>
+                            <div *ngIf="campeonato.legenda.semi_classificados[nomeReduzidoDoGrupo].length > 0" class="box-semi-classificados">
+                                <div class="circle semi_classificados">&nbsp;</div>
+                                <div>{{campeonato.legenda.semi_classificados_alias[nomeReduzidoDoGrupo]}}</div>
+                            </div>
+                            <div *ngIf="campeonato.legenda.rebaixados[nomeReduzidoDoGrupo].length > 0"class="box-rebaixados">
+                                <div class="circle rebaixados">&nbsp;</div>
+                                <div>{{campeonato.legenda.rebaixados_alias[nomeReduzidoDoGrupo]}}</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

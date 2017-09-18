@@ -1,13 +1,13 @@
 <div class="container">
     <div class="row">
-        <div class="pontos-corridos" *ngFor="let grupo of campeonato.json.grupos; let myIndex = index">
-            <!--span ng-init="grupoNome=(grupo.nome | replaceGrupo)"></span>
-            <span ng-init="jogosPorGrupos=fasesJogos['faseUnica']"></span-->
-            <div class="col-lg-8"><tabela-modulo-classificacao [grupo]="grupo"></tabela-modulo-classificacao></div>
-            <!--div class="col-lg-4"><modulo-rodadas></modulo-rodadas></div-->
+        <div class="pontos-corridos" *ngFor="let grupo of campeonato.json.grupos; let myIndex = index;">
+            <!--span ng-init="jogosPorGrupos=fasesJogos['faseUnica']"></span-->
+            <div class="col-lg-8">
+              <tabela-modulo-classificacao [nomeReduzidoDoGrupo]="grupo.nome | ReduzirNomeGrupo" [grupo]="grupo" [campeonato]="campeonato"></tabela-modulo-classificacao>
+            </div>
+            <div class="col-lg-4">
+              <tabela-modulo-rodadas [jogos]="campeonato.jogos" [nomeReduzidoDoGrupo]="grupo.nome | ReduzirNomeGrupo"></tabela-modulo-rodadas>
+            </div>
         </div>
     </div>
 </div>
-
-
-<!--tabela-modulo-rodadas></tabela-modulo-rodadas-->

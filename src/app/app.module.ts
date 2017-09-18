@@ -7,6 +7,8 @@ import { AppRoutes } from './routes';
 import { ApiConfig } from "./config/api.config";
 
 import { Campeonato } from "./lib/campeonato";
+import { Legenda } from "./lib/legenda";
+
 import { ApiService } from "./service/api.service";
 
 import { IndexComponent } from "./index/index.component";
@@ -16,6 +18,8 @@ import { PontosCorridosComponent } from "./campeonato/modelos/pontos-corridos.co
 
 import { ClassificacaoComponent } from "./campeonato/modulos/classificacao/classificacao.component";
 import { RodadasComponent } from "./campeonato/modulos/rodadas/rodadas.component";
+import { ReduzirNomeGrupoPipe } from "./pipes/reduzir-nome-grupo";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,14 +27,17 @@ import { RodadasComponent } from "./campeonato/modulos/rodadas/rodadas.component
     TemplateComponent,
     PontosCorridosComponent,
     ClassificacaoComponent,
-    RodadasComponent
+    RodadasComponent,
+    ReduzirNomeGrupoPipe
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(AppRoutes),
-    HttpModule
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [ApiService, ApiConfig, Campeonato],
+  providers: [ApiService, ApiConfig, Campeonato, Legenda],
   bootstrap: [IndexComponent]
 })
 export class AppModule { }
