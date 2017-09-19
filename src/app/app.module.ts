@@ -13,15 +13,16 @@ import { ApiService } from "./service/api.service";
 
 import { IndexComponent } from "./index/index.component";
 import { TemplateComponent } from "./campeonato/template.component";
-
 import { PontosCorridosComponent } from "./campeonato/modelos/pontos-corridos.component";
-
 import { ClassificacaoComponent } from "./campeonato/modulos/classificacao/classificacao.component";
 import { RodadasComponent } from "./campeonato/modulos/rodadas/rodadas.component";
 
 import { ReduzirNomeGrupoPipe } from "./pipes/reduzir-nome-grupo";
 import { FiltrarEscudoPipe } from "./pipes/filtrar-escudo";
 import { LinkPaginaEquipePipe } from "./pipes/link-pagina-equipe";
+import { DiaDaSemanaPipe } from "./pipes/dia-da-semana";
+import { DataPipe } from "./pipes/data";
+import { EstadioPipe } from "./pipes/estadio";
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -34,7 +35,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RodadasComponent,
     ReduzirNomeGrupoPipe,
     FiltrarEscudoPipe,
-    LinkPaginaEquipePipe
+    LinkPaginaEquipePipe,
+    DiaDaSemanaPipe,
+    DataPipe,
+    EstadioPipe
   ],
   imports: [
     BrowserModule,

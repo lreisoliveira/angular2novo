@@ -1131,3 +1131,7 @@ i.icon-up {
 .circle.rebaixados {
     background-color: #ff4444;
 }
+
+.rodadas {
+    list-style-type: none;
+}

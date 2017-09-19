@@ -9,39 +9,43 @@ export class Campeonato extends Legenda {
   public configCampeonato: any = [];
   public legenda: any;
 
+  public getJogos(rodadasFaseGrupos, grupos) {
 
- public getJogos(rodadasFaseGrupos, grupos)
- {
+    var jogos        = new Object();
+    var nome_grupo   = grupos[0]['nome'].replace('GRUPO', '').trim();
+    var lista_grupos: any = [];
+    var numeroRodada = '';
 
-  var jogos        = new Object();
-  var nome_grupo   = grupos[0]['nome'].replace('GRUPO', '').trim();
-  var lista_grupos: any = [];
-  var numeroRodada = '';
+    for (var i in rodadasFaseGrupos) {
+      lista_grupos = rodadasFaseGrupos[i];
 
-  for (var i in rodadasFaseGrupos) {
-    lista_grupos = rodadasFaseGrupos[i];
-      if (typeof rodadasFaseGrupos[i].grupos != 'undefined') {
-        for (var ii in lista_grupos.grupos) {
-          if (typeof lista_grupos.grupos[ii].partidas == 'undefined') {
-            continue;
-          }
-          if (lista_grupos.grupos[ii].partidas.length > 0) {
-            nome_grupo = lista_grupos.grupos[ii].nome_grupo;
+      if (typeof rodadasFaseGrupos[i].grupos == 'undefined') {
+         continue;
+      }
 
-            if (typeof jogos[nome_grupo] == "undefined") {
-              jogos[nome_grupo] = new Object();
-            }
-            numeroRodada = lista_grupos.numero_rodada;
-            if (typeof jogos[nome_grupo][numeroRodada] == 'undefined') {
-              jogos[nome_grupo][numeroRodada] = new Object();
-              jogos[nome_grupo][numeroRodada] = lista_grupos.grupos[ii].partidas;
-            }
-          }
+      for (var ii in lista_grupos.grupos) {
+
+        if (typeof lista_grupos.grupos[ii].partidas == 'undefined') {
+          continue;
+        }
+
+        if (lista_grupos.grupos[ii].partidas.length == 0) {
+          continue;
+        }
+
+        nome_grupo = lista_grupos.grupos[ii].nome_grupo;
+        if (typeof jogos[nome_grupo] == "undefined") {
+          jogos[nome_grupo] = new Object();
+        }
+        numeroRodada = lista_grupos.numero_rodada;
+        if (typeof jogos[nome_grupo][numeroRodada] == 'undefined') {
+          jogos[nome_grupo][numeroRodada] = new Object();
+          jogos[nome_grupo][numeroRodada] = lista_grupos.grupos[ii].partidas;
         }
       }
     }
     return jogos;
- }
+  }
 
   public criarCampeonato(campeonato)
   {
@@ -51,10 +55,6 @@ export class Campeonato extends Legenda {
       this.anoCampeonato = this.anoCampeonato.substr(0,4) + '-' + this.anoCampeonato.substr(4,4);
     }
     this.configCampeonato = this.criarConfigCampeonato(campeonato,this.anoCampeonato)
-    //console.log('configCampeonato', this.configCampeonato.campeonato.nome);
-    //console.log('configCampeonato campeonato', campeonato);
-    //this.montarTabela(this.configCampeonato);
-    //this.configCampeonato = this.slug;
   }
 
   public criarConfigCampeonato(campeonato, anoCampeonato)
@@ -65,7 +65,7 @@ export class Campeonato extends Legenda {
     config['json']             = campeonato;
     config['mostrarNomeGrupo'] = true;
     config['legenda']          = this.getLegenda(campeonato.slug);
-    config['jogos']       = this.getJogos(campeonato.rodadas_grupos, campeonato.grupos);
+    config['jogos']            = this.getJogos(campeonato.rodadas_grupos, campeonato.grupos);
     console.log('jogos', config['jogos']['A'])
 
     if (campeonato.tipo != 'pontos_corridos'){
@@ -74,10 +74,6 @@ export class Campeonato extends Legenda {
       config['mostrarNomeGrupo'] = false;
     }
     return config;
-  }
-
-  public montarTabela(config){
-    //this.valor = 'aeeesadsadsaeeeee';
   }
 
   /**

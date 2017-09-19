@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({name: 'LinkPaginaEquipe'})
+@Pipe({name: 'linkDaPaginaDaEquipe'})
 export class LinkPaginaEquipePipe implements PipeTransform {
   transform(input: string, link: any = String, title: String): any {
     if (typeof link != 'undefined' && link !== null) {

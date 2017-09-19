@@ -7,8 +7,7 @@ import { Component, Input } from '@angular/core';
 
 export class TemplateComponent {
 
-  @Input()
-  configCampeonato: any = [];
+  @Input() configCampeonato: any = [];
 
 }
 

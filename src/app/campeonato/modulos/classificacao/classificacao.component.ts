@@ -6,13 +6,10 @@ import { Component, Input, Directive } from '@angular/core';
 })
 export class ClassificacaoComponent {
 
-  @Input()
-  campeonato: any = [];
+  @Input() campeonato: any = [];
 
-  @Input()
-  grupo: any = [];
+  @Input() grupo: any = [];
 
-  @Input()
-  nomeReduzidoDoGrupo: String;
+  @Input() nomeReduzidoDoGrupo: String;
 
 }
